@@ -1,0 +1,21 @@
+class Solution {
+    public int[] sortArrayByParity(int[] nums) {
+        List<Integer> even = new ArrayList<>();
+        List<Integer> odd = new ArrayList<>();
+
+        for(int i : nums){
+            if(i%2 == 0){
+                even.add(i);
+            }else{
+                odd.add(i);
+            }
+        }
+        even.addAll(odd);
+        int[] answer = new int[even.size()];
+
+        for(int j = 0; j < even.size();j++){
+            answer[j] = even.get(j);
+        }
+        return answer;
+    }
+}

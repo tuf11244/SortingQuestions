@@ -1,0 +1,23 @@
+//https://leetcode.com/problems/rank-transform-of-an-array/
+
+public int[] arrayRankTransform(int[] arr) {
+         // Step 1: Sort the array and create a mapping
+        int[] sortedArr = arr.clone();
+        Arrays.sort(sortedArr);
+
+        Map<Integer, Integer> rankMapping = new HashMap<>();
+        int rank = 1;
+        for (int num : sortedArr) {
+            if (!rankMapping.containsKey(num)) {
+                rankMapping.put(num, rank++);
+            }
+        }
+
+        // Step 2: Assign ranks to each element
+        int[] ranks = new int[arr.length];
+        for (int i = 0; i < arr.length; i++) {
+            ranks[i] = rankMapping.get(arr[i]);
+        }
+
+        return ranks;
+    }
